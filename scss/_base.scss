@@ -1,0 +1,110 @@
+@use '_reset' as *;
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:300,600');
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+    background: #222;
+    font-family: 'Work Sans', sans-serif;
+}
+
+main {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .background {
+    background: url("https://picsum.photos/1000/1000");
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    background-size: cover;
+    filter: blur(0.5rem);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .foreground {
+    z-index: 500;
+    p {
+      text-align: center;
+      color: black;
+    }
+  }
+}
+
+header {
+  position: fixed;
+  z-index: 500;
+  top: 0;
+  left: 0;
+  height: 5rem;
+  width: 100%;
+  background: royalblue;
+
+  display: grid;
+  grid-template-columns: 1fr auto minmax(500px, 3fr) 1fr;
+
+  .logo {
+    grid-column: 2 / 3;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    h2 {
+      text-transform: uppercase;
+      color: whitesmoke;
+    }
+  }
+
+  input {
+    display: none;
+  }
+
+  nav {
+    grid-column: 3 / 4;
+    display: grid;
+    align-items: center;
+    ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 3em;
+
+      a {
+        text-decoration: none;
+        color: whitesmoke;
+        text-transform: uppercase;
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: -5px;
+          left: 0px;
+          display: block;
+          width: 0%;
+          height: 3px;
+          background: whitesmoke;
+
+          transition: width 250ms ease-in-out;
+          transform-origin: center;
+        }
+
+        &:hover::before {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@import "mobile";
